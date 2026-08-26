@@ -1,0 +1,9 @@
+# Ignore personal Markdown notes
+*notes.md
+notes/
+
+# Ignore other
+tests/
+.idea/
+__pycache__/
+
