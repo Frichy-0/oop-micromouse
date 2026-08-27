@@ -1,4 +1,4 @@
-# Object-Oriented Micromouse Controller (maze_solver_project)
+# Object-Oriented Micromouse Controller (oop-micromouse)
 
 [//]: # (Add build status) 
 
