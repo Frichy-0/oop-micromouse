@@ -29,11 +29,12 @@ class TestDevice(unittest.TestCase):
     def test_given_incorrect_robot_type_when_initialised_then_raises_error(
             self):
         """Test output of incorrect robot type."""
-        with self.assertRaises(AttributeError):
-            # TODO: list of tests as below
-            hardware.Device(robot="robot", device_name=self.device_name)
-            hardware.Device(robot=None, device_name=self.device_name)
-            hardware.Device(robot=float("nan"), device_name=self.device_name)
+        invalid_robots = ["robot", None, float("nan")]
+
+        for robot in invalid_robots:
+            with self.subTest(robot=robot):
+                with self.assertRaises(AttributeError):
+                    hardware.Device(robot=robot, device_name=self.device_name)
 
 class TestSensor(unittest.TestCase):
     """Test enabling sensor device and correct attribute assignment."""
