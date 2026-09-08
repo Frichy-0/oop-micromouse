@@ -1,9 +1,6 @@
 """Unittests for hardware.py"""
 import sys
 from pathlib import Path
-
-from hardware import DistSensor, WheelEncoder
-
 # put src directory on path
 src_dir = Path(__file__).resolve().parent.parent / "src"
 sys.path.insert(0, str(src_dir))
