@@ -10,14 +10,14 @@ from unittest.mock import MagicMock
 import hardware
 
 class TestDevice(unittest.TestCase):
-    """Test hardware device initialisation and correct attribute assignment."""
+    """Test hardware initialisation and correct attribute assignment in Device class."""
     def setUp(self):
         self.mock_robot = MagicMock()
         self.mock_hardware_device = MagicMock()
         self.device_name = "test_device"
 
     def test_given_valid_inputs_when_initialised_then_has_correct_values(self):
-        """Test if initialises with input values."""
+        """Test if Device class initialises with input values."""
         device = hardware.Device(robot=self.mock_robot,
                             device_name=self.device_name)
         self.assertEqual(device.device_name, self.device_name)
@@ -25,7 +25,7 @@ class TestDevice(unittest.TestCase):
 
     def test_given_incorrect_robot_type_when_initialised_then_raises_error(
             self):
-        """Test output of incorrect robot type."""
+        """Test output of incorrect robot type in Device class."""
         invalid_robots = ["robot", None, float("nan")]
 
         for robot in invalid_robots:
@@ -34,7 +34,7 @@ class TestDevice(unittest.TestCase):
                     hardware.Device(robot=robot, device_name=self.device_name)
 
 class TestSensor(unittest.TestCase):
-    """Test enabling sensor device and correct attribute assignment."""
+    """Test enabling Sensor device and correct attribute assignment."""
     def setUp(self):
         self.mock_robot = MagicMock()
         self.sensor_name = "test_sensor"
@@ -50,7 +50,7 @@ class TestSensor(unittest.TestCase):
         sensor.device.enable.assert_called_once_with(self.timestep)
 
 class TestDistSensor(unittest.TestCase):
-    """Test correct offset assignment and verify distance calculation logic."""
+    """Test correct offset assignment and verify distance calculation logic in DistSensor class."""
     #TODO: should I use test inheritance?
     def setUp(self):
         self.mock_robot = MagicMock()
@@ -78,11 +78,11 @@ class TestDistSensor(unittest.TestCase):
         return sensor
 
     def test_given_valid_inputs_when_initialised_then_sets_offset(self):
-        """Test if DistSensor correctly assigns offset attribute."""
+        """Test if DistSensor class correctly assigns offset attribute."""
         self.assertEqual(self.sensor.offset, self.offset)
 
     def test_when_call_get_distance_then_calls_value(self):
-        """Test if get_distance fetches a reading from the connected
+        """Test if DistSensor.get_distance fetches a reading from the connected
         hardware device."""
         self.sensor.get_distance()
         self.sensor.device.getValue.assert_called_once()
@@ -144,7 +144,7 @@ class TestDistSensor(unittest.TestCase):
                     sensor.get_distance()
 
 class TestEncoder(unittest.TestCase):
-    """Test correct radius assignment and verify distance calculation logic."""
+    """Test correct radius assignment and verify distance calculation logic in WheeEncoder class."""
     def setUp(self):
         self.mock_robot = MagicMock()
         self.sensor_name = "test_sensor"
@@ -173,7 +173,7 @@ class TestEncoder(unittest.TestCase):
         self.assertEqual(self.sensor.radius, self.radius)
 
     def test_when_call_get_distance_then_calls_value(self):
-        """Test if get_distance fetches a reading from the connected
+        """Test if WheelEncoder.get_distance fetches a reading from the connected
         hardware device."""
         self.sensor.get_distance()
         self.sensor.device.getValue.assert_called_once()
@@ -237,7 +237,7 @@ class TestEncoder(unittest.TestCase):
                     sensor.get_distance()
 
 class TestDriveMotor(unittest.TestCase):
-    """Test correct method call for set_position and set_velocity methods."""
+    """Test correct DriveMotor method call for set_position and set_velocity methods."""
     def setUp(self):
         self.mock_robot = MagicMock()
         self.device_name = "test_device"
@@ -246,7 +246,7 @@ class TestDriveMotor(unittest.TestCase):
 
     def test_given_valid_inputs_when_set_position_then_has_correct_values(
             self):
-        """Test if set_position writes input values to connected hardware
+        """Test if DriveMotor.set_position writes input values to connected hardware
         device"""
         position = 10
         self.drive_motor.set_position(position)
@@ -254,7 +254,7 @@ class TestDriveMotor(unittest.TestCase):
 
     def test_given_valid_inputs_when_set_velocity_then_has_correct_values(
             self):
-        """Test if set_velocity writes input values to connected hardware
+        """Test if DriveMotor.set_velocity writes input values to connected hardware
         device"""
         velocity = 10
         self.drive_motor.set_velocity(velocity)
