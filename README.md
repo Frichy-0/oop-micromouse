@@ -35,25 +35,47 @@ clarify uncertainty, and assist with Unittest coverage.
 
 ## Install
 
-* Python 3.12
+* Developed using Python 3.12.
 * This project requires an installation of 
 [Webots simulator](https://cyberbotics.com/doc/guide/installing-webots)
 
-
 Download or clone the project:
 
-```sh
+```bash
 git clone https://github.com/Frichy-0/oop-micromouse
 ```
-From the shell navigate to the project directory and install 
-dependencies:
-```sh
-pip install -r requirements.txt
+From the shell navigate to the controller directory:
+```bash
+cd <path-to-project-directory>/controllers/oop_controller
 ```
+Activate the virtual environment and install dependencies:
+* **Linux / MacOS:**
+  ```bash
+  python -m venv venv
+  source venv/bin/activate
+  pip install -r requirements.txt
+  ```
+
+* **Windows (PowerShell):**
+  ```powershell
+  python -m venv venv
+  venv\Scripts\Activate.ps1
+  pip install -r requirements.txt
+  ```
+
+Create a file to point Webots to the correct interpreter:
+* **Linux / MacOS:**
+  ```bash
+  echo -e "[python]\nCOMMAND = $(pwd)/venv/bin/python" > runtime.ini
+  ```
+* **Windows (PowerShell):**
+  ```powershell
+  "[python]`nCOMMAND = <path-to-project-directory>\oop-micromouse\controllers\oop_controller\venv\Scripts\python.exe" | Out-File -FilePath runtime.ini -Encoding utf8
+  ``` 
 
 ## Usage
 
-Run Webots and go to File > Open World.
+Open Webots and go to File > Open World.
 
 Navigate to maze_solver_project/Worlds/maze.wbt and select Open.
 

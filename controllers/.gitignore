@@ -6,4 +6,5 @@ notes/
 tests/
 .idea/
 __pycache__/
+runtime.ini
 
