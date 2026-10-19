@@ -36,8 +36,9 @@ clarify uncertainty, and assist with Unittest coverage.
 ## Install
 
 * Developed using Python 3.12.
+* Please note that this installer guide has been tested on Linux and Windows only. 
 * This project requires an installation of 
-[Webots simulator](https://cyberbotics.com/doc/guide/installing-webots)
+[Webots simulator](https://cyberbotics.com/doc/guide/installing-webots). If using Linux install using APT to avoid unexpected behaviour. 
 
 Download or clone the project:
 
